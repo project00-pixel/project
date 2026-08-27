@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    touch-action: pan-y;
+  }
+
+  img {
+    content-visibility: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+  }
+
+  button, a {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Fast hardware-accelerated transitions and smooth scrolling */
+.smooth-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Ultra-smooth cubic bezier transitions */
+.smooth-transition {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Off-screen section optimization for 120fps scrolling */
+.chapter-viewport-optimized {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
+/* Comic frame box shadows with zero blur CPU overhead */
+.comic-panel-frame {
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.comic-panel-frame:hover {
+  transform: translateY(-3px) translateZ(0);
+}
+
+/* Modal and floating overlays hardware layer */
+.smooth-layer {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Glassmorphic backdrop blur enhancements */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+.dark .glass-panel {
+  background: rgba(22, 34, 44, 0.90);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Sleek custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 115, 74, 0.4);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 115, 74, 0.85);
+}
+
